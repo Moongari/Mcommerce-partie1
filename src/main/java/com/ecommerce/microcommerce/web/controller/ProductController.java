@@ -19,6 +19,7 @@ import java.net.URI;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 
 @Api( description="API pour des opérations CRUD sur les produits.")
@@ -103,7 +104,7 @@ public class ProductController {
     @GetMapping(value = "test/produits/{prix}")
     public List<Product>  testeDeRequetes(@PathVariable int prix) {
 
-        return productDao.chercherUnProduitCher(400);
+        return productDao.chercherUnProduitCher(prix);
     }
 
 
@@ -115,6 +116,8 @@ public class ProductController {
         Map<String,Integer> margeMap = new HashMap<>();
 
         List<Product> productList =  productDao.findAll();
+
+
 
             for (Product item : productList){
 
@@ -128,7 +131,6 @@ public class ProductController {
             }
 
             return margeMap;
-
 
     }
 
